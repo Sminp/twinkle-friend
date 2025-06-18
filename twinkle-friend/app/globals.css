@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-white, #ffffff);
+  --foreground: var(--color-neutral-800, #1c1c1c);
   /* 여기서부터 시작 */
   /* 색상 테마 추가할 것 */
   /* 1. gradient */
@@ -10,6 +10,9 @@
 }
 
 @theme inline {
+  --font-pretandard: var(--font-pretendard);
+  --font-SBAggro: var(--font-SBAggro);
+
   --color-white: hex(ffffff);
   --color-black: hex(000000);
 
@@ -43,5 +46,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-pretendard), Arial, Helvetica, sans-serif;
 }
