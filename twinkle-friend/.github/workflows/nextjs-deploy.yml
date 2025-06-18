@@ -1,36 +1,35 @@
----
 name: Deploy Next.js Static Page to GitHub Pages
 
 on:
   push:
     branches:
-      - main # main 브랜치에 push될 때 워크플로우 실행
+      - main
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # 최신 Ubuntu 환경에서 실행
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      - name: Checkout repository # 저장소 코드 체크아웃
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js # Node.js 환경 설정
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22" # 사용할 Node.js 버전 지정 (Next.js 권장 버전에 맞춰주세요)
-          cache: "npm" # npm 캐싱 활성화 (선택 사항)
+          node-version: "22"
+          cache: "npm"
 
-      - name: Install dependencies # 프로젝트 의존성 설치
+      - name: Install dependencies
         run: npm install
 
-      - name: Build Next.js Static Site # Next.js 정적 사이트 빌드 및 export
-        # Next.js는 next.config.ts 파일을 자동으로 인식하고 사용합니다.
-        run: npm run build
+      - name: Build Next.js Static Site
+        run: npm run build # 반드시 next export 포함되어야 함
 
-      - name: Deploy to GitHub Pages # 빌드된 파일을 GitHub Pages에 배포
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub에서 제공하는 기본 토큰
-          publish_dir: ./out # Next.js가 정적 파일을 내보내는 기본 디렉토리
-          publish_branch: gh-pages # GitHub Pages가 서비스할 브랜치. GitHub Pages 설정에서 선택한 브랜치와 일치해야 함.
-          # cname: your-custom-domain.com # 커스텀 도메인을 사용하는 경우 주석을 해제하고 도메인을 입력합니다.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          publish_branch: gh-pages
