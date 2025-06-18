@@ -3,13 +3,34 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* 여기서부터 시작 */
+  /* 색상 테마 추가할 것 */
+  /* 1. gradient */
+  /* 2. primary-300 */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-white: hex(ffffff);
+  --color-black: hex(000000);
+
+  --color-neutral-050: hex(ffffff);
+  --color-neutral-100: hex(e3e3e3);
+  --color-neutral-200: hex(c6c6c6);
+  --color-neutral-300: hex(aaaaaa);
+  --color-neutral-400: hex(88ee8e);
+  --color-neutral-500: hex(717171);
+  --color-neutral-600: hex(555555);
+  --color-neutral-700: hex(393939);
+  --color-neutral-800: hex(1c1c1c);
+  --color-neutral-900: hex(000000);
+
+  --color-primary-050: hex(6d81ff);
+  --color-primary-100: hex(b6c6fd);
+  --color-primary-200: hex(d1deff);
+
+  --color-secondary-050: hex(87dde9);
+  --color-secondary-100: hex(cbebf0);
+  --color-secondary-200: hex(e5f8fd);
 }
 
 @media (prefers-color-scheme: dark) {
