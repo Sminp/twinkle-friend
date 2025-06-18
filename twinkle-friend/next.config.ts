@@ -2,8 +2,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export", // 이 부분이 가장 중요합니다!
-
   // GitHub Pages URL에 저장소 이름이 포함된다면 반드시 설정해야 합니다.
   // 예: https://<username>.github.io/<repository-name>
   // 저장소 이름이 'my-nextjs-app' 이라면 '/my-nextjs-app'으로 설정
