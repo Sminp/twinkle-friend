@@ -32,5 +32,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }} # GitHub에서 제공하는 기본 토큰
           publish_dir: ./out # Next.js가 정적 파일을 내보내는 기본 디렉토리
-          publish_branch: main # GitHub Pages가 서비스할 브랜치. GitHub Pages 설정에서 선택한 브랜치와 일치해야 함.
+          publish_branch: gh-pages # GitHub Pages가 서비스할 브랜치. GitHub Pages 설정에서 선택한 브랜치와 일치해야 함.
           # cname: your-custom-domain.com # 커스텀 도메인을 사용하는 경우 주석을 해제하고 도메인을 입력합니다.
