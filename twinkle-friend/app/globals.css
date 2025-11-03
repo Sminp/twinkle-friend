@@ -2,38 +2,38 @@
 
 :root {
   --background: var(--color-white, #ffffff);
-  --foreground: var(--color-neutral-800, #1c1c1c);
+  --foreground: var(--color-neutral-900, #000000);
   /* 여기서부터 시작 */
   /* 색상 테마 추가할 것 */
   /* 1. gradient */
   /* 2. primary-300 */
 }
 
-@theme inline {
+@theme {
   --font-pretandard: var(--font-pretendard);
   --font-SBAggro: var(--font-SBAggro);
 
-  --color-white: hex(ffffff);
-  --color-black: hex(000000);
+  --color-white: oklch(1 0 0); /* hex(ffffff) */
+  --color-black: oklch(0 0 0); /* hex(000000) */
 
-  --color-neutral-050: hex(ffffff);
-  --color-neutral-100: hex(e3e3e3);
-  --color-neutral-200: hex(c6c6c6);
-  --color-neutral-300: hex(aaaaaa);
-  --color-neutral-400: hex(88ee8e);
-  --color-neutral-500: hex(717171);
-  --color-neutral-600: hex(555555);
-  --color-neutral-700: hex(393939);
-  --color-neutral-800: hex(1c1c1c);
-  --color-neutral-900: hex(000000);
+  --color-neutral-050: oklch(1 0 0); /* hex(ffffff) */
+  --color-neutral-100: oklch(0.9158 0 0); /* hex(e3e3e3) */
+  --color-neutral-200: oklch(0.8266 0 0); /* hex(c6c6c6) */
+  --color-neutral-300: oklch(0.738 0 0); /* hex(aaaaaa)*/
+  --color-neutral-400: oklch(0.6467 0 0); /* hex(88ee8e) */
+  --color-neutral-500: oklch(0.5486 0 0); /* hex(717171) */
+  --color-neutral-600: oklch(0.4495 0 0); /* hex(555555) */
+  --color-neutral-700: oklch(0.3446 0 0); /* hex(393939) */
+  --color-neutral-800: oklch(0.2264 0 0); /* hex(1c1c1c) */
+  --color-neutral-900: oklch(0 0 0); /* hex(000000) */
 
-  --color-primary-050: hex(6d81ff);
-  --color-primary-100: hex(b6c6fd);
-  --color-primary-200: hex(d1deff);
+  --color-primary-050: oklch(0.6506 0.186566 273.3191); /* hex(6d81ff) */
+  --color-primary-100: oklch(0.8335 0.0794 271.98); /* hex(b6c6fd) */
+  --color-primary-200: oklch(0.9012 0.0475 268.4); /* hex(d1deff) */
 
-  --color-secondary-050: hex(87dde9);
-  --color-secondary-100: hex(cbebf0);
-  --color-secondary-200: hex(e5f8fd);
+  --color-secondary-050: oklch(0.8473 0.0848 207.06); /* hex(87dde9) */
+  --color-secondary-100: oklch(0.9185 0.0342 208.01); /* hex(cbebf0) */
+  --color-secondary-200: oklch(0.9666 0.0211 215.25); /* hex(e5f8fd) */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -47,4 +47,82 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-pretendard), Arial, Helvetica, sans-serif;
+}
+
+#__layout {
+}
+
+#app {
+}
+
+#main {
+}
+
+#splash {
+  background-color: var(--color-primary-050);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#splash .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem; /* 24px */
+  padding: 1rem;
+  text-align: center;
+  color: white; /* Default text color */
+}
+
+.content-area {
+  max-width: 390px;
+  min-height: 100vh;
+  /* min-height: 844px; */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container {
+}
+
+.content-wrap {
+}
+
+.section-wrap {
+}
+
+.common {
+}
+
+.title {
+}
+
+.tit-tail {
+}
+
+.section-body {
+}
+
+.content {
+  width: 100%;
+  text-align: center;
+}
+
+.start-text {
+  color: var(--color-white);
+  font-family: var(--font-SBAggro);
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 5%;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
