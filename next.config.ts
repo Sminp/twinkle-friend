@@ -1,17 +1,27 @@
-// next.config.ts
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  // GitHub Pages URL에 저장소 이름이 포함된다면 반드시 설정해야 합니다.
-  // 예: https://<username>.github.io/<repository-name>
-  // 저장소 이름이 'my-nextjs-app' 이라면 '/my-nextjs-app'으로 설정
-  basePath: process.env.NODE_ENV === "production" ? "/twinkle-friend" : "",
+// 1. 저장소 이름을 변수로 분리합니다. (production 환경에서만 적용)
+// ❗ [중요] "/저장소 이름"을 실제 깃허브 저장소 이름으로 변경하세요. (예: "/banzzak-friend")
+const repoName = process.env.NODE_ENV === "production" ? "/twinkle-friend" : "";
 
+const nextConfig: NextConfig = {
+  // 2. ❗ [가장 중요] "out" 폴더를 생성하는 정적 내보내기(static export) 옵션입니다.
+  // 이 설정이 없으면 GitHub Pages 배포가 불가능합니다.
+  output: "export",
+
+  // 3. ❗ [중요] basePath와 assetPrefix를 동일하게 설정합니다.
+  // basePath: Next.js 라우터가 사용할 경로 (예: /저장소 이름/map)
+  basePath: repoName,
+  // assetPrefix: JS, CSS, 이미지 등 에셋을 불러올 경로 (예: /저장소 이름/_next/static/...)
+  assetPrefix: repoName,
+
+  // 4. [정확함] 정적 내보내기 시 Next.js Image 컴포넌트 최적화 비활성화
   images: {
-    unoptimized: true, // 정적 내보내기 시 Next.js Image 컴포넌트 최적화 비활성화
+    unoptimized: true,
   },
 
-  trailingSlash: true, // URL 끝에 슬래시를 추가하여 정적 파일 경로 문제 방지 (권장)
+  // 5. [좋은 설정] URL 끝에 슬래시를 추가하여 정적 파일 경로 문제 방지
+  trailingSlash: true,
 };
 
 export default nextConfig;
