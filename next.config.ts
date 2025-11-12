@@ -1,18 +1,15 @@
 import type { NextConfig } from "next";
 
-// 1. 저장소 이름을 변수로 분리합니다. (production 환경에서만 적용)
-// ❗ [중요] "/저장소 이름"을 실제 깃허브 저장소 이름으로 변경하세요. (예: "/banzzak-friend")
-const repoName = process.env.NODE_ENV === "production" ? "/twinkle-friend" : "";
+// 1. ❗ [가장 중요] process.env.NODE_ENV 로직을 제거하고,
+// 저장소 이름을 "/twinkle-friend"로 하드코딩(고정)합니다.
+const repoName = "/twinkle-friend";
 
 const nextConfig: NextConfig = {
   // 2. ❗ [가장 중요] "out" 폴더를 생성하는 정적 내보내기(static export) 옵션입니다.
-  // 이 설정이 없으면 GitHub Pages 배포가 불가능합니다.
   output: "export",
 
   // 3. ❗ [중요] basePath와 assetPrefix를 동일하게 설정합니다.
-  // basePath: Next.js 라우터가 사용할 경로 (예: /저장소 이름/map)
   basePath: repoName,
-  // assetPrefix: JS, CSS, 이미지 등 에셋을 불러올 경로 (예: /저장소 이름/_next/static/...)
   assetPrefix: repoName,
 
   // 4. [정확함] 정적 내보내기 시 Next.js Image 컴포넌트 최적화 비활성화
