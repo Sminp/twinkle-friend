@@ -1,4 +1,5 @@
-import { ChevronDown, Pencil } from "lucide-react";
+import { Location } from "@/constants/image";
+import Image from "next/image";
 
 interface PetInfoCardProps {
   petName: string;
@@ -20,10 +21,18 @@ export default function PetInfoCard({
     <section className="flex flex-col gap-3.5 px-6">
       <div className="flex items-center gap-1.5">
         <p className="text-base font-semibold text-black">내 반려동물</p>
-        <ChevronDown size={20} color="black" />
+        <Image
+          width={20}
+          height={20}
+          src={Location}
+          alt="수정"
+          className="text-black"
+        />
       </div>
       <div className="flex items-center gap-4 p-4 rounded-xl bg-[#d1deff]/60">
-        <img
+        <Image
+          width={58}
+          height={58}
           src={image}
           alt={petName}
           className="w-[58px] h-[58px] rounded-full object-cover bg-white"
@@ -31,7 +40,13 @@ export default function PetInfoCard({
         <div className="flex flex-col gap-2">
           <div className="flex items-center gap-2">
             <p className="text-[15px] font-semibold text-black">{petName}</p>
-            <Pencil size={12} className="text-[#C6C6C6]" />
+            <Image
+              width={12}
+              height={12}
+              src={Location}
+              alt="수정"
+              className="text-[#C6C6C6]"
+            />
           </div>
           <div className="flex items-center gap-2 divide-x divide-[#717171]">
             <p className="text-xs text-left text-[#717171]">{age}</p>
