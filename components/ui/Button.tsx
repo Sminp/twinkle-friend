@@ -1,19 +1,5 @@
-// import Link from "next/link"; // 미리보기 환경에서는 Next.js Link를 사용할 수 없으므로 주석 처리
+import Link from "next/link"; // 미리보기 환경에서는 Next.js Link를 사용할 수 없으므로 주석 처리
 import type { ReactNode } from "react";
-
-/**
- * 미리보기용 Mock Link 컴포넌트
- * (실제 Link 컴포넌트 대신 <a> 태그를 사용)
- */
-const Link: React.FC<{
-  href: string;
-  className?: string;
-  children: ReactNode;
-}> = ({ href, className, children }) => (
-  <a href={href} className={className}>
-    {children}
-  </a>
-);
 
 interface ButtonProps {
   src?: string; // Link일 때만 필요하므로 optional

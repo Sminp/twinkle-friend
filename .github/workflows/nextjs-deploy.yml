@@ -25,8 +25,13 @@ jobs:
         run: npm install
 
       - name: Build Next.js Static Site
-        run: |
-          REPO_NAME=/twinkle-friend npm run build
+        run: npm run build
+        # 1. [수정] 이 env 블록을 추가합니다.
+        # 이렇게 하면 next.config.ts의 'process.env.NODE_ENV'가
+        # 'production'이 되어 repoName이 '/twinkle-friend'로 설정됩니다.
+        # ❗ 이것이 GitHub Pages에서 이미지가 보이지 않던 문제의 핵심 해결책입니다.
+        env:
+          NODE_ENV: production
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
