@@ -25,7 +25,9 @@ jobs:
         run: npm install
 
       - name: Build Next.js Static Site
-        run: npm run build # 반드시 next export 포함되어야 함
+        run: npm run build
+        env: # <-- 이 3줄을 추가하세요!
+          NODE_ENV: production
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
