@@ -1,4 +1,6 @@
-import { MapPin, Search, ChevronDown, Bell } from "lucide-react"; // 아이콘
+import { Location, Logo, Notice } from "@/constants/image";
+import Image from "next/image";
+import Link from "next/link";
 
 /**
  * 메인 페이지 상단 고정 헤더
@@ -10,13 +12,12 @@ export default function LocationSearchHeader() {
       {/* 1. 로고 및 알림 아이콘 */}
       <div className="flex justify-between items-center w-full h-[52px] px-6">
         <div className="flex items-center gap-2">
-          {/* 로고 SVG (placeholder) */}
-          <svg width={26} height={26} viewBox="0 0 26 26" fill="none">
-            <rect width="26" height="26" rx="4" fill="#6D81FF" />
-          </svg>
+          <Link href="/main">
+            <Image width={26} height={26} src={Logo} alt={Logo} />{" "}
+          </Link>
           <p className="text-xl font-bold text-[#6d81ff]">반짝친구</p>
         </div>
-        <Bell size={24} color="black" />
+        <Image width={24} height={24} src={Notice} alt={Notice} />
       </div>
 
       {/* 2. 위치 및 검색창 */}
@@ -29,13 +30,32 @@ export default function LocationSearchHeader() {
           }}
         >
           <div className="flex items-center gap-3">
-            <MapPin size={20} className="text-[#6D81FF]" />
+            <Image
+              width={20}
+              height={20}
+              src={Location}
+              alt="수정"
+              className="text-[#6D81FF]"
+            />
+
             <p className="text-[15px] font-semibold text-black">서울 노원구</p>
           </div>
-          <ChevronDown size={24} className="text-[#8E8E8E]" />
+          <Image
+            width={24}
+            height={24}
+            src={Location}
+            alt="수정"
+            className="text-[#8E8E8E]"
+          />
         </div>
         <div className="flex items-center w-full h-[46px] gap-2 px-6 rounded-2xl bg-gray-100">
-          <Search size={20} className="text-[#6D81FF]" />
+          <Image
+            width={20}
+            height={20}
+            src={Location}
+            alt="수정"
+            className="text-[#6D81FF]"
+          />
           <input
             type="text"
             placeholder="검색어를 입력해주세요"

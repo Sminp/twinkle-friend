@@ -1,4 +1,5 @@
-import { Star, Info } from "lucide-react";
+import { Location } from "@/constants/image";
+import Image from "next/image";
 
 /**
  * 1. "최근 솔직 리뷰" 카드
@@ -27,8 +28,11 @@ export const ReviewCard = ({
     {/* 병원 정보 */}
     <div className="flex justify-between items-center p-3 rounded-md bg-[#f1f5ff]">
       <div className="flex items-center gap-3.5">
-        <img
+        <Image
+          width={37}
+          height={36}
           src="https://placehold.co/37x36/e0e7ff/6D81FF?text=H"
+          alt="병원"
           className="w-[37px] h-9 rounded object-cover"
         />
         <div>
@@ -36,16 +40,20 @@ export const ReviewCard = ({
           <p className="text-[10px] text-[#555]">{location}</p>
         </div>
       </div>
-      <ChevronRight size={16} className="text-[#8E8E8E]" />
+      <ChevronRight width={16} className="text-[#8E8E8E]" />
     </div>
     {/* 리뷰 이미지 */}
     <div className="flex gap-2.5 w-full">
-      <img
+      <Image
+        width={37}
+        height={70}
         src={images[0]}
         className="w-1/2 h-[70px] rounded object-cover"
         alt="Review 1"
       />
-      <img
+      <Image
+        width={37}
+        height={70}
         src={images[1]}
         className="w-1/2 h-[70px] rounded object-cover"
         alt="Review 2"
@@ -53,21 +61,23 @@ export const ReviewCard = ({
     </div>
     {/* 리뷰어 정보 */}
     <div className="flex gap-2">
-      <img
+      <Image
+        width={37}
+        height={37}
         src="https://placehold.co/20x20/E3E3E3/8E8E8E?text=U"
         className="w-5 h-5 rounded-full"
-        alt="Reviewer"
+        alt="Reviewer 수정"
       />
       <div className="flex flex-col gap-1 w-full">
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-Imaget">
           <div>
             <p className="text-[11px] font-semibold text-black">{reviewer}</p>
             <div className="flex items-center gap-1.5">
-              <Star size={10} fill="#FFDB63" stroke="none" />
-              <Star size={10} fill="#FFDB63" stroke="none" />
-              <Star size={10} fill="#FFDB63" stroke="none" />
-              <Star size={10} fill="#FFDB63" stroke="none" />
-              <Star size={10} fill="#FFDB63" stroke="none" opacity={0.3} />
+              <Image width={10} height={10} src={Location} alt="별" />
+              <Image width={10} height={10} src={Location} alt="별" />
+              <Image width={10} height={10} src={Location} alt="별" />
+              <Image width={10} height={10} src={Location} alt="별" />
+              <Image width={10} height={10} src={Location} alt="별" />
               <span className="text-[9px] text-[#555]">({rating})</span>
             </div>
           </div>
@@ -100,7 +110,13 @@ export const ClinicCard = ({
   image: string;
 }) => (
   <div className="flex-shrink-0 flex flex-col gap-3 w-[111px]">
-    <img src={image} className="w-full h-[109px] rounded object-cover" />
+    <Image
+      width={111}
+      height={109}
+      src={image}
+      alt="image"
+      className="w-full h-[109px] rounded object-cover"
+    />
     <div className="flex flex-col gap-1.5">
       <div>
         <p className="text-sm font-medium text-black truncate">
@@ -113,12 +129,18 @@ export const ClinicCard = ({
           <p className="text-[9px] font-semibold text-[#4cc4d4]">
             진료비 평균가
           </p>
-          <Info size={12} className="text-[#C6C6C6]" />
+          <Image
+            src={Location}
+            width={12}
+            height={12}
+            alt="정보"
+            className="text-[#C6C6C6]"
+          />
         </div>
         <p className="text-sm font-semibold text-black">{avgPrice}</p>
       </div>
       <div className="flex items-center gap-0.5">
-        <Star size={11} fill="#FFDB63" stroke="none" />
+        <Image width={11} height={11} src={Location} alt="몰라" />
         <p className="text-[10px] text-[#555]">
           {rating} ({reviewCount})
         </p>
@@ -142,7 +164,13 @@ export const ContentCard = ({
   image: string;
 }) => (
   <div className="flex-shrink-0 w-[182px] h-[230px] relative rounded-xl overflow-hidden">
-    <img src={image} className="w-full h-full object-cover" alt={title} />
+    <Image
+      src={image}
+      className="w-full h-full object-cover"
+      width={182}
+      height={230}
+      alt={title}
+    />
     {/* 그라데이션 오버레이 */}
     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
     {/* 텍스트 컨텐츠 */}
@@ -162,10 +190,10 @@ export const ContentCard = ({
 );
 
 // --- 헬퍼 아이콘 ---
-const ChevronRight = ({ size = 16, className = "" }) => (
+const ChevronRight = ({ width = 16, className = "" }) => (
   <svg
-    width={size}
-    height={size}
+    width={width}
+    height={width}
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

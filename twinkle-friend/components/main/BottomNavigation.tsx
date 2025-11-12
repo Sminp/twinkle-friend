@@ -1,8 +1,18 @@
 "use client";
 
+import {
+  Community,
+  CommunityClick,
+  Home,
+  HomeClick,
+  Map,
+  MapClick,
+  User,
+  UserClick,
+} from "@/constants/image";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Map, MessageCircle, User } from "lucide-react"; // 아이콘 라이브러리
 
 /**
  * 하단 고정 네비게이션 컴포넌트
@@ -12,10 +22,20 @@ export default function BottomNavigation() {
   const pathname = usePathname();
 
   const navItems = [
-    { href: "/", label: "홈", icon: Home },
-    { href: "/map", label: "지도", icon: Map },
-    { href: "/community", label: "커뮤니티", icon: MessageCircle },
-    { href: "/mypage", label: "마이페이지", icon: User },
+    { href: "/main/", label: "홈", icon: Home, iconPage: HomeClick },
+    { href: "/map", label: "지도", icon: Map, iconPage: MapClick },
+    {
+      href: "/community",
+      label: "커뮤니티",
+      icon: Community,
+      iconPage: CommunityClick,
+    },
+    {
+      href: "/mypage",
+      label: "마이페이지",
+      icon: User,
+      iconPage: UserClick,
+    },
   ];
 
   return (
@@ -24,9 +44,12 @@ export default function BottomNavigation() {
       style={{ boxShadow: "0px -6px 10px 0 rgba(0,0,0,0.1)" }}
     >
       {navItems.map((item) => {
-        const isActive = pathname === item.href;
+        const isActive =
+          item.href === "/main"
+            ? pathname === item.href
+            : pathname.startsWith(item.href);
         const Icon = item.icon;
-        const color = isActive ? "#6D81FF" : "black";
+        const TargetIcon = item.iconPage;
 
         return (
           <Link
@@ -34,7 +57,12 @@ export default function BottomNavigation() {
             key={item.label}
             className="flex flex-col justify-center items-center h-[60px] w-[60px] gap-1.5"
           >
-            <Icon size={26} color={color} strokeWidth={isActive ? 2.5 : 2} />
+            <Image
+              src={isActive ? TargetIcon : Icon}
+              width={26}
+              height={26}
+              alt={`${Icon}`}
+            />
             <p
               className={`text-xs font-semibold text-center ${
                 isActive ? "text-[#6d81ff]" : "text-black"
