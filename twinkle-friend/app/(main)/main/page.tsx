@@ -7,6 +7,7 @@ import LocationSearchHeader from "@/components/main/LocationSearchHeader";
 import PetInfoCard from "@/components/main/PetInfoCard";
 import ContentSection from "@/components/main/ContentSection";
 import { ReviewCard, ClinicCard, ContentCard } from "@/components/main/Cards";
+import { Location } from "@/constants/image";
 
 // --- CSS for Hiding Scrollbar ---
 // 3. 스크롤바를 숨기는 CSS를 추가합니다.
@@ -244,7 +245,7 @@ export default function Main() {
             petName="콩이"
             age="2세"
             breed="브리티쉬 쇼트헤어"
-            image="https://placehold.co/58x58/white/6D81FF?text=콩"
+            image={Location}
           />
           {/* 2-2. 콩이 예방접종 섹션 */}
           <ContentSection

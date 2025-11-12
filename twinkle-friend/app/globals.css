@@ -80,6 +80,8 @@ body {
   max-width: 390px;
   min-height: 100vh;
   /* min-height: 844px; */
+  margin-left: auto;
+  margin-right: auto;
   overflow: hidden;
   display: flex;
   flex-direction: column;
