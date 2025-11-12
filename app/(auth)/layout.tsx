@@ -12,7 +12,7 @@ export default function MainLayout({
       <div className="w-full py-3 inline-flex flex-col justify-start items-start gap-2 overflow-hidden">
         <div className="self-stretch inline-flex justify-between items-center">
           <div className="w-6 h-6 relative overflow-hidden">
-            <Link href="/">
+            <Link href="/" className="cursor-pointer">
               <Image
                 className="w-1.5 h-3 left-[9px] top-[6px] absolute "
                 width={6}

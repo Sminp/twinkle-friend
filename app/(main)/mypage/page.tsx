@@ -1,9 +1,20 @@
 "use client";
 
+import BackButton from "@/components/ui/BackButton";
+import {
+  ArrowRight,
+  Building,
+  Calendar,
+  Camera,
+  Cat,
+  Good,
+  Help,
+  Setting,
+  Write,
+} from "@/constants/image";
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-// lucide-react 아이콘을 사용하여 SVG를 대체합니다. (Canvas 미리보기용 Mock 포함)
-// import { ChevronLeft, Settings, Camera, ClipboardList, Calendar, Heart, Edit, MessageSquare, ChevronRight } from "lucide-react";
 
 // --- Refactored Sub-components ---
 
@@ -14,16 +25,13 @@ import React from "react";
 const MyPageHeader: React.FC = () => (
   <header className="flex justify-between items-center w-full px-6 py-3">
     <div className="flex items-center gap-3">
-      {/* '뒤로가기' 버튼. 실제로는 Link나 router.back()을 사용합니다. */}
-      <Link href="/" className="cursor-pointer">
-        <ChevronLeft size={24} className="text-white" />
-      </Link>
+      <BackButton />
       <p className="text-lg font-semibold text-white">마이페이지</p>
     </div>
     {/* '설정' 버튼 */}
-    <a href="/settings" className="cursor-pointer">
-      <Settings size={24} className="text-white" />
-    </a>
+    <Link href="/settings" className="cursor-pointer">
+      <Image width={24} height={24} src={Setting} alt={Setting} />
+    </Link>
   </header>
 );
 
@@ -35,8 +43,10 @@ const ProfileSection: React.FC = () => (
   <section className="flex flex-col items-center gap-4 pb-16">
     {/* 프로필 이미지 컨테이너 */}
     <div className="relative">
-      <img
-        src="https://placehold.co/108x108/white/6D81FF?text=콩" // 고양이.png 대신 플레이스홀더
+      <Image
+        width={108}
+        height={108}
+        src={Cat} // 고양이.png 대신 플레이스홀더
         alt="프로필 이미지"
         className="w-[108px] h-[108px] rounded-full object-cover"
       />
@@ -45,7 +55,7 @@ const ProfileSection: React.FC = () => (
         className="absolute bottom-0 right-0 flex justify-center items-center w-[30px] h-[30px] rounded-full bg-[#b6c6fd]"
         style={{ boxShadow: "0px 0px 8px 0 rgba(0,0,0,0.25)" }}
       >
-        <Camera size={16} className="text-white" />
+        <Image width={16} height={16} src={Camera} alt={Camera} />
       </button>
     </div>
     {/* 닉네임 */}
@@ -69,7 +79,7 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label }) => (
       {icon}
       <div className="text-base font-medium text-[#1c1c1c]">{label}</div>
     </div>
-    <ChevronRight size={24} className="text-[#8E8E8E]" />
+    <Image width={24} height={24} src={ArrowRight} alt={ArrowRight} />
   </a>
 );
 
@@ -83,19 +93,19 @@ const MenuSection: React.FC = () => (
   >
     <div className="flex flex-col">
       <MenuItem
-        icon={<ClipboardList size={24} className="text-black" />}
+        icon={<Image width={24} height={24} src={Building} alt={Building} />}
         label="최근 클릭한"
       />
       <MenuItem
-        icon={<Calendar size={24} className="text-black" />}
+        icon={<Image width={24} height={24} src={Calendar} alt={Calendar} />}
         label="예약내역"
       />
       <MenuItem
-        icon={<Heart size={24} className="text-black" />}
+        icon={<Image width={24} height={24} src={Good} alt={Good} />}
         label="찜 목록"
       />
       <MenuItem
-        icon={<Edit size={24} className="text-black" />}
+        icon={<Image width={24} height={24} src={Write} alt={Write} />}
         label={
           <div className="flex justify-center items-center gap-[5px]">
             <p>작성한 리뷰</p>
@@ -113,7 +123,7 @@ const MenuSection: React.FC = () => (
         }
       />
       <MenuItem
-        icon={<MessageSquare size={24} className="text-black" />}
+        icon={<Image width={24} height={24} src={Help} alt={Help} />}
         label="고객센터"
       />
       {/* 마지막 아이템은 border가 없으므로 MenuSection에서 마지막 패딩으로 처리 */}

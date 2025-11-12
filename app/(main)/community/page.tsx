@@ -1,6 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import BackButton from "@/components/ui/BackButton";
+import { Comment, Down, Edit, GoodCommunity } from "@/constants/image";
+import Image from "next/image";
+// import Link from "next/link";
 import React, { useState } from "react";
 // lucide-react 아이콘을 사용하여 SVG를 대체합니다. (Canvas 미리보기용 Mock 포함)
 // import { ChevronLeft, Heart, MessageSquare, Edit, ChevronDown, User } from "lucide-react";
@@ -26,10 +29,7 @@ const scrollbarHideStyle = `
 const CommunityHeader: React.FC = () => (
   <header className="fixed top-0 left-0 right-0 z-30 flex items-center w-full h-[50px] max-w-[390px] mx-auto px-6 bg-white border-b border-gray-100">
     <div className="flex items-center gap-3">
-      {/* '뒤로가기' 버튼. 실제로는 Link나 router.back()을 사용합니다. */}
-      <Link href="/" className="cursor-pointer">
-        <ChevronLeft size={24} className="text-black" />
-      </Link>
+      <BackButton />
       <p className="text-lg font-semibold text-black">커뮤니티</p>
     </div>
   </header>
@@ -214,7 +214,8 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => (
     className="flex flex-col w-full gap-5 py-[18px] border-b border-[#e3e3e3]"
   >
     <div className="flex items-start gap-2.5">
-      <User className="flex-shrink-0 w-[23px] h-[22px]" />
+      {/* <User className="flex-shrink-0 w-[23px] h-[22px]" /> */}
+
       <div className="flex flex-col flex-grow gap-[7px]">
         {/* Post Header */}
         <div className="flex justify-between items-start">
@@ -240,8 +241,10 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => (
         {post.images && post.images.length > 0 && (
           <div className="flex gap-[11px] mt-1">
             {post.images.map((img, index) => (
-              <img
+              <Image
                 key={index}
+                width={71}
+                height={71}
                 src={img}
                 alt={`post ${post.id} image ${index + 1}`}
                 className="w-[71px] h-[71px] rounded object-cover"
@@ -253,11 +256,13 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => (
         {/* Post Footer (Likes, Comments) */}
         <div className="flex items-center gap-3 mt-1">
           <div className="flex items-center gap-[3px]">
-            <Heart className="text-[#8e8e8e]" />
+            {/* 사이즈 수정 */}
+            <Image src={GoodCommunity} alt="Good" width={24} height={24} />
             <p className="text-[11px] text-left text-[#8e8e8e]">{post.likes}</p>
           </div>
           <div className="flex items-center gap-[3px]">
-            <MessageSquare className="text-[#8e8e8e]" />
+            {/* 사이즈 수정 */}
+            <Image src={Comment} alt="Comment" width={24} height={24} />
             <p className="text-[11px] text-left text-[#8e8e8e]">
               {post.comments}
             </p>
@@ -330,7 +335,8 @@ const PostListSection: React.FC = () => (
         <p className="text-[13px] font-medium text-left text-[#1c1c1c]">
           최신순
         </p>
-        <ChevronDown size={14} className="text-[#1C1C1C]" />
+        {/* 사이즈 수정 */}
+        <Image src={Down} alt="Down" width={14} height={14} />
       </div>
     </div>
 
@@ -351,7 +357,8 @@ const WritePostButton: React.FC = () => (
     className="fixed bottom-[105px] right-5 z-20 flex justify-center items-center w-[62px] h-[62px] rounded-[40px] bg-[#6d81ff]"
     style={{ boxShadow: "0px 0px 8px 0 rgba(0,0,0,0.25)" }}
   >
-    <Edit size={30} className="text-white" />
+    {/* 사이즈 수정 */}
+    <Image src={Edit} alt="Edit" width={30} height={30} />
   </button>
 );
 
